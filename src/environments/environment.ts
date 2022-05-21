@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // AuthURL: 'http://localhost:29072/api',
+  // AuthURL: 'https://localhost:44365/api',
+  // CompURL: 'https://localhost:44342/api',
+
+  AuthURL: 'http://authorization12.azurewebsites.net/api',
+  CompURL: 'http://componentbackendservice.azurewebsites.net/api',
 };
 
 /*

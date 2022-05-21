@@ -1,0 +1,198 @@
+<p>process-request works!</p>
+<!--
+  [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string ContactNumber { get; set; }
+        [Required]
+        public string CreditCardNumber { get; set; }
+        [Required]
+        public string ComponentType { get; set; }
+        [Required]
+        public string ComponentName { get; set; }
+        [Required]
+        public int Quantity { get; set; }
+        [Required]
+        public bool IsPriorityRequest { get; set; }
+        [Required]
+        public DateTime OrderPlacedDate { get; set; }
+
+-->
+<form [formGroup]="requestForm" (ngSubmit)="onSubmitrequestForm()">
+  <div class="row">
+    <div class="form-group">
+      <label for="UserName">Username :</label>
+      <input
+        type="text"
+        class="form-control"
+        id="UserName"
+        placeholder="UserName"
+        formControlName="UserName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="ContactNumber">ContactNumber :</label>
+      <input
+        type="text"
+        class="form-control"
+        id="ContactNumber"
+        placeholder=""
+        formControlName="ContactNumber"
+      />
+    </div>
+    <div class="form-group">
+      <label for="CreditCardNumber">CreditCardNumber</label>
+      <input
+        type="text"
+        class="form-control"
+        id="CreditCardNumber"
+        placeholder=""
+        formControlName="CreditCardNumber"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="comptype"> ComponentType:</label>
+      <select
+        name="comptype"
+        id="comptype"
+        class="form-control"
+        formControlName="ComponentType"
+      >
+        <option value="Integral">Integral</option>
+        <option value="Accessory">Accessory</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="ComponentName"> ComponentName:</label>
+      <select
+        name="ComponentName"
+        id="ComponentName"
+        class="form-control"
+        formControlName="ComponentName"
+      >
+        <option value="Repair">Repair</option>
+        <option value="Replacement">Replacement</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="Quantity">Quantity:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="Quantity"
+        placeholder=""
+        formControlName="Quantity"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="PriorityRequest"> PriorityRequest:</label>
+      <select
+        name="PriorityRequest"
+        id="PriorityRequest"
+        class="form-control"
+        formControlName="PriorityRequest"
+      >
+        <option value="Y">YES</option>
+        <option value="N">NO</option>
+      </select>
+    </div>
+  </div>
+  <button
+    [disabled]="!requestForm.valid"
+    class="btn btn-info float-right mt-3 mb-3"
+    type="submit"
+  >
+    Submit
+  </button>
+</form>
+
+<!--
+ [Required]
+        public int RequestId { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        public double ProcessingCharge { get; set; }
+
+        [Required]
+        public double PackagingAndDeliveryCharge { get; set; }
+
+        [Required]
+        public DateTime DateOfDelivery { get; set; }
+
+        [Required]
+        public double TotalCharge { get; set; }
+
+        [Required]
+        public string CreditCardNo { get; set; }
+
+ creditCardNo: "33333333"
+dateOfDelivery: "2022-05-22T00:08:42.034454+05:30"
+id_res: 5
+packagingAndDeliveryCharge: 300
+processingCharge: 700
+requestId: 33610
+totalCharge: 1000
+userName: "u1"
+
+ -->
+
+<div class="row mt-5" *ngIf="requestData">
+  <div class="card">
+    <div class="card-header">
+      <b>Process Response</b>
+    </div>
+    <div class="card-body">
+      <table style="width: 60%">
+        <tr>
+          <th>RequestId</th>
+          <td>{{ requestData.requestId }}</td>
+        </tr>
+        <tr>
+          <th>UserName</th>
+          <td>{{ requestData.userName }}</td>
+        </tr>
+        <tr>
+          <th>Processing charge</th>
+          <td>{{ requestData.processingCharge }}</td>
+        </tr>
+        <tr>
+          <th>Package&delivey</th>
+          <td>{{ requestData.packagingAndDeliveryCharge }}</td>
+        </tr>
+        <tr>
+          <th>DateOfDelivery</th>
+          <td>{{ requestData.dateOfDelivery | date }}</td>
+        </tr>
+        <tr>
+          <th>TotalCharge</th>
+          <td>{{ requestData.totalCharge }}</td>
+        </tr>
+        <tr>
+          <th>CreditCardNo</th>
+          <td>{{ requestData.creditCardNo }}</td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" (click)="payment()">Confirm</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5" *ngIf="balanceamt">
+  <table style="width: 60%">
+    <tr>
+      <th>Balance Amount</th>
+      <td>{{ balanceamt }}</td>
+    </tr>
+  </table>
+</div>
